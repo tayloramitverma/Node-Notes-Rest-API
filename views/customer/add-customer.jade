@@ -1,0 +1,56 @@
+extends ../layout/base 
+block content 
+	section.content-header 
+		h1 
+			| Blank Page
+			small it all starts here
+		ol.breadcrumb 
+			li 
+				a(href='#') 
+					i.fa.fa-dashboard
+					| Level 
+			li.active Here 
+	section.content
+		.box
+			.box-header.with-border
+				h3.box-title
+					| Customer
+				.box-tools.pull-right
+					button(type='button', data-widget='collapse', data-toggle='tooltip',title='collapse').btn.btn-box-tool
+						i.fa.fa-minus
+					
+			.box-body
+				form(role='form',method='post' action='/customers/add')
+					.row
+						
+						.col-xs-6
+							.box-body
+								- if (messages.msg_error) 
+									.alert.alert-danger.alert-dismissable 
+										button.close(type='button', data-dismiss='alert', aria-hidden='true') 
+											| ×
+										h4
+											i.icon.fa.fa-ban
+											| Alert! 
+										| !{messages.msg_error}
+								.form-group
+									label
+										| Name
+									input(type='text',value='#{name}',name='name',placeholder='Enter Name', autofocus).form-control
+								.form-group
+									label
+										| Address
+									input(type='text',name='address',placeholder='Enter address').form-control
+								.form-group
+									label
+										| Email
+									input(type='text',value='#{email}',name='email',placeholder='Enter Address').form-control
+								.form-group
+									label
+										| Phone
+									input(type='text',name='phone',placeholder='Enter Phone').form-control
+							.box-footer
+								button(type='submit').btn.btn-primary
+									| Submit
+								a(href='/customers').btn.btn-primary.pull-right
+									| Back
